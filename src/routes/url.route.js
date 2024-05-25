@@ -5,6 +5,10 @@ import { getViews } from '../controllers/analytics.js';
 
 const router = express.Router();
 
+router.route('/').get((req, res) => {
+  res.status(200).json({ message: 'OK' });
+});
+
 // Receive a long url from req, send a short URL as response
 router.route('/new').post(shrinkUrl);
 
