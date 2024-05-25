@@ -7,7 +7,9 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'https://url-shrink-frontend.vercel.app'
+    origin: 'https://url-shrink-frontend.vercel.app',
+    methods: 'GET, POST, OPTIONS',
+    allowedHeaders: 'Content-Type'
   })
 );
 

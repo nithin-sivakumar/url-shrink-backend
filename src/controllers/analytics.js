@@ -2,14 +2,6 @@ import { Url } from '../models/url.model.js';
 
 export const getViews = async (req, res) => {
   try {
-    // Set CORS headers for all requests
-    res.header(
-      'Access-Control-Allow-Origin',
-      'https://url-shrink-frontend.vercel.app'
-    );
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-
     // Handle preflight requests
     if (req.method === 'OPTIONS') {
       return res.status(204).end();
