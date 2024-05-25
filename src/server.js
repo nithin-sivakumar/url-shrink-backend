@@ -5,17 +5,26 @@ import { connectDB } from './db/db.connect.js';
 
 const PORT = process.env.PORT || 5001;
 
-const server = http.createServer(app);
+let server;
 
-connectDB().then(
-  () => {
+async function startServer() {
+  if (server) {
+    return server;
+  }
+
+  server = http.createServer(app);
+
+  try {
+    await connectDB();
     server.listen(PORT, () => {
       console.log(`Server is running on PORT: ${PORT}`);
     });
-  },
-  () => {
-    console.log(`Failed to connect to MongoDB`);
+  } catch (err) {
+    console.log('Failed to connect to MongoDB', err);
+    throw err;
   }
-);
 
-export default server;
+  return server;
+}
+
+export default startServer;
