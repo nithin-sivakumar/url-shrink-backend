@@ -11,6 +11,12 @@ export const shrinkUrl = async (req, res) => {
     // 1. req.body -> original URL
     const { url } = req.body;
 
+    const urlRegex = /^(http|https):\/\/[^ "]+$/;
+
+    if (!urlRegex.test(url)) {
+      return res.status(400).json({ message: 'Please provide a valid URL!' });
+    }
+
     // 2. Generate a short url
     const uid = new short({ length: 6 });
     const shortId = uid.rnd();
