@@ -5,7 +5,11 @@ import cors from 'cors';
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: 'https://url-shrink-frontend.vercel.app'
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
