@@ -1,4 +1,7 @@
-const whitelist = ['https://url-shrink-frontend.vercel.app'];
+const whitelist = [
+  'http://localhost:5000',
+  'https://url-shrink-backend.vercel.app'
+];
 
 export const corsOptions = {
   origin: function (origin, callback) {

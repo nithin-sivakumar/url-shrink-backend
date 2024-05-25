@@ -11,6 +11,8 @@ export const redirectToUrl = async (req, res) => {
     currentUrl.clicks += 1;
     await currentUrl.save();
 
+    res.header('Access-Control-Allow-Origin', '*');
+
     // 3. Redirect the user to currentUrl.originalUrl
     res.redirect(currentUrl.originalUrl);
   } catch (error) {

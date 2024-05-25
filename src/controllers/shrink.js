@@ -18,6 +18,8 @@ export const shrinkUrl = async (req, res) => {
       shortenedUrl: shortId
     });
 
+    res.header('Access-Control-Allow-Origin', '*');
+
     // 4. Send the short url as a response
     res.status(200).json({
       message: 'URL shrinking successful.',

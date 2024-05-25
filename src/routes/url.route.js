@@ -6,6 +6,7 @@ import { getViews } from '../controllers/analytics.js';
 const router = express.Router();
 
 router.route('/').get((req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
   res.status(200).json({ message: 'OK' });
 });
 
