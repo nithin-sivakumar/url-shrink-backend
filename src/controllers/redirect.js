@@ -13,6 +13,10 @@ export const redirectToUrl = async (req, res) => {
     // 2. Fetch the document that contains short ID as r24s7d
     const currentUrl = await Url.findOne({ shortenedUrl: id });
 
+    if (!currentUrl) {
+      return res.status(404).json({ message: 'Invalid Short ID provided!' });
+    }
+
     currentUrl.clicks += 1;
     await currentUrl.save();
 

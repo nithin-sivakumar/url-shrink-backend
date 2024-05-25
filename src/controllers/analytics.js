@@ -13,6 +13,10 @@ export const getViews = async (req, res) => {
     // 2. Get the document that has the same ShortID
     const currentUrl = await Url.findOne({ shortenedUrl: id });
 
+    if (!currentUrl) {
+      return res.status(404).json({ message: 'Invalid Short ID provided!' });
+    }
+
     res.header('Access-Control-Allow-Origin', '*');
 
     // 3. Return that document.clicks as response
